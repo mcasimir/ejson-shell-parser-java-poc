@@ -12,6 +12,7 @@ repositories {
 dependencies {
     implementation 'org.graalvm.js:js:23.0.1'
     implementation group: 'org.mongodb', name: 'bson', version: '4.10.2'
+    implementation group: 'org.mongodb', name: 'mongodb-driver-sync', version: '4.10.2'
 }
 
 task npmInstall(type: Exec) {
