@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = '17'
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.graalvm.js:js:23.0.1'
+    implementation group: 'org.mongodb', name: 'bson', version: '4.10.2'
+}
+
+task npmInstall(type: Exec) {
+    description = 'Install npm dependencies'
+    workingDir = "js"
+    commandLine 'npm', 'install'
+}
+
+task webpack(type: Exec) {
+    dependsOn npmInstall
+    description = 'Rebuild ejson-shell-parser.js'
+    workingDir = "js"
+    commandLine 'npm', 'run', 'build'
+}
